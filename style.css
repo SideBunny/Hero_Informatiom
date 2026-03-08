@@ -57,10 +57,7 @@ background-size:cover;
 /* ===== BANNER ===== */
 
 .banner{
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px 40px;
+width:100%;
 background:#111;
 cursor:pointer;
 }
