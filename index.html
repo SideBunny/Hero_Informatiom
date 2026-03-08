@@ -44,13 +44,11 @@
 <div id="orangeLine" class="orange-line"></div>
 
 
-<!-- BANNER -->
+<!-- BANNER (clickeable) -->
 
-<div class="banner">
+<div class="banner" id="bannerLink">
 
 <img id="bannerImg">
-
-<button onclick="window.location.href=bannerRuta">Leer Más</button>
 
 </div>
 
@@ -112,20 +110,24 @@ Ruta:"HeroWorld.html"
 CARGAR BANNER
 ========================= */
 
-document.getElementById("orangeLine").style.backgroundImage=
+document.getElementById("orangeLine").style.backgroundImage =
 `url(${pagina.orangeLine})`;
 
-const bannerRuta=pagina.banner.ruta;
+const banner = document.getElementById("bannerLink");
 
-document.getElementById("bannerImg").src=
+document.getElementById("bannerImg").src =
 pagina.banner.imagen;
+
+banner.onclick = () => {
+window.location.href = pagina.banner.ruta;
+};
 
 
 /* =========================
 CARGAR NOTICIAS
 ========================= */
 
-const container=document.getElementById("newsContainer");
+const container = document.getElementById("newsContainer");
 
 pagina.News.forEach(n=>{
 
