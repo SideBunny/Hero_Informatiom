@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Information Hero</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+<div class="logo">Information Hero</div>
+
+<div class="search">🔍</div>
+
+</header>
+
+
+<!-- MENU -->
+
+<div class="nav">
+
+<a href="index.html">Últimas noticias</a>
+<a href="temporada.html">Calendario de temporada</a>
+<a href="articulos.html">Artículos</a>
+<a href="tests.html">Tests</a>
+<a href="guias.html">Guías</a>
+<a href="entrevistas.html">Entrevistas</a>
+<a href="mas.html">Más</a>
+<a href="acerca.html">Acerca</a>
+
+</div>
+
+
+<!-- FRANJA NARANJA -->
+
+<div id="orangeLine" class="orange-line"></div>
+
+
+<!-- BANNER -->
+
+<div class="banner">
+
+<img id="bannerImg">
+
+<button onclick="window.location.href=bannerRuta">Leer Más</button>
+
+</div>
+
+
+
+<div class="container">
+
+<div id="newsContainer"></div>
+
+</div>
+
+
+
+<script>
+
+/* =========================
+CONFIGURACION PAGINA
+========================= */
+
+const pagina = {
+
+orangeLine:
+"https://TU-WORDPRESS/franja.png",
+
+banner:{
+imagen:"https://TU-WORDPRESS/banner.png",
+ruta:"noticia-principal.html"
+},
+
+News: [
+
+{
+Imagen:"https://i.imgur.com/0KFBHTB.jpg",
+texto:["Noticia sobre el nuevo héroe Shawl"],
+Fecha:["10 de marzo","12:22"],
+Ruta:"Shawl.html"
+},
+
+{
+Imagen:"https://i.imgur.com/0KFBHTB.jpg",
+texto:["Noticia sobre el villano Shawl"],
+Fecha:["8 de marzo","12:22"],
+Ruta:"ShawlVillain.html"
+},
+
+{
+Imagen:"https://i.imgur.com/0KFBHTB.jpg",
+texto:["Nueva historia del universo Hero"],
+Fecha:[],
+Ruta:"HeroWorld.html"
+}
+
+]
+
+}
+
+
+/* =========================
+CARGAR BANNER
+========================= */
+
+document.getElementById("orangeLine").style.backgroundImage=
+`url(${pagina.orangeLine})`;
+
+const bannerRuta=pagina.banner.ruta;
+
+document.getElementById("bannerImg").src=
+pagina.banner.imagen;
+
+
+/* =========================
+CARGAR NOTICIAS
+========================= */
+
+const container=document.getElementById("newsContainer");
+
+pagina.News.forEach(n=>{
+
+const card=document.createElement("div");
+card.className="news-card";
+
+let fechaHTML="";
+
+if(n.Fecha && n.Fecha.length){
+
+fechaHTML=`<div class="news-date">${n.Fecha.join(" ")}</div>`;
+
+}
+
+card.innerHTML=`
+
+<img src="${n.Imagen}" onclick="window.location.href='${n.Ruta}'">
+
+<div class="news-info">
+
+<h2 onclick="window.location.href='${n.Ruta}'">
+${n.texto.join("")}
+</h2>
+
+${fechaHTML}
+
+</div>
+
+`;
+
+container.appendChild(card);
+
+});
+
+</script>
+
+</body>
+</html>
