@@ -18,7 +18,9 @@
 
 <div class="logo">Information Hero</div>
 
-<div class="search">🔍</div>
+<div class="search">
+<img id="searchIcon">
+</div>
 
 </header>
 
@@ -53,7 +55,6 @@
 </div>
 
 
-
 <div class="container">
 
 <div id="newsContainer"></div>
@@ -69,6 +70,13 @@ CONFIGURACION PAGINA
 ========================= */
 
 const pagina = {
+
+/* LUPA BUSCADOR */
+
+search:{
+pc:"URL_LUPA_PC",
+cell:"URL_LUPA_CELL"
+},
 
 orangeLine:{
 pc:"https://informatiom0.wordpress.com/wp-content/uploads/2026/03/franga.png?w=1440&allow_lossy=1",
@@ -128,6 +136,7 @@ function cargarImagenes(){
 
 const orange = document.getElementById("orangeLine");
 const bannerImg = document.getElementById("bannerImg");
+const searchIcon = document.getElementById("searchIcon");
 
 if(esCelular()){
 
@@ -136,12 +145,16 @@ orange.style.backgroundImage =
 
 bannerImg.src = pagina.banner.cell;
 
+searchIcon.src = pagina.search.cell;
+
 }else{
 
 orange.style.backgroundImage =
 `url(${pagina.orangeLine.pc})`;
 
 bannerImg.src = pagina.banner.pc;
+
+searchIcon.src = pagina.search.pc;
 
 }
 
