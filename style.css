@@ -137,3 +137,19 @@ height:auto;
 }
 
 }
+
+.banner{
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px 40px;
+background:#111;
+cursor:pointer;
+}
+
+.banner img{
+width:100%;
+max-width:1200px;
+height:auto;
+border-radius:6px;
+}
