@@ -58,24 +58,17 @@ background-size:cover;
 
 .banner{
 display:flex;
-justify-content:space-between;
+justify-content:center;
 align-items:center;
 padding:20px 40px;
 background:#111;
+cursor:pointer;
 }
 
 .banner img{
-height:154px;
-object-fit:cover;
-}
-
-.banner button{
-background:#ff7a00;
-border:none;
-padding:12px 25px;
-font-weight:bold;
-border-radius:25px;
-cursor:pointer;
+width:100%;
+height:auto;
+display:block;
 }
 
 /* ===== CONTENIDO ===== */
@@ -136,19 +129,4 @@ width:100%;
 height:auto;
 }
 
-}
-
-.banner{
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px 40px;
-background:#111;
-cursor:pointer;
-}
-
-.banner img{
-width:100%;
-height:auto;
-display:block;
 }
