@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Information Hero</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#000;
+color:white;
+}
+
+/* ===== HEADER ===== */
+
+header{
+background:#0b0b0b;
+padding:15px 40px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+border-bottom:1px solid #222;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+}
+
+.search{
+font-size:22px;
+cursor:pointer;
+}
+
+/* ===== MENU ===== */
+
+.nav{
+display:flex;
+gap:25px;
+padding:10px 40px;
+background:#000;
+font-weight:bold;
+}
+
+.nav a{
+color:white;
+text-decoration:none;
+font-size:15px;
+}
+
+.nav a:hover{
+color:#ff7a00;
+}
+
+/* ===== LINEA NARANJA ===== */
+
+.orange-line{
+width:100%;
+height:4px;
+background-size:cover;
+}
+
+/* ===== BANNER ===== */
+
+.banner{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+background:#111;
+}
+
+.banner img{
+height:154px;
+object-fit:cover;
+}
+
+.banner button{
+background:#ff7a00;
+border:none;
+padding:12px 25px;
+font-weight:bold;
+border-radius:25px;
+cursor:pointer;
+}
+
+/* ===== CONTENIDO ===== */
+
+.container{
+padding:40px;
+max-width:1200px;
+margin:auto;
+}
+
+/* ===== CARD NOTICIA ===== */
+
+.news-card{
+display:flex;
+gap:25px;
+margin-bottom:50px;
+align-items:center;
+}
+
+.news-card img{
+width:576px;
+height:324px;
+object-fit:cover;
+border-radius:6px;
+cursor:pointer;
+}
+
+.news-info{
+max-width:500px;
+}
+
+.news-info h2{
+font-size:34px;
+margin:0 0 10px 0;
+cursor:pointer;
+}
+
+.news-info h2:hover{
+color:#ff7a00;
+}
+
+.news-date{
+color:#aaa;
+font-size:14px;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:900px){
+
+.news-card{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.news-card img{
+width:100%;
+height:auto;
+}
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+<div class="logo">Information Hero</div>
+
+<div class="search">🔍</div>
+
+</header>
+
+
+<!-- MENU -->
+
+<div class="nav">
+
+<a href="index.html">Últimas noticias</a>
+<a href="temporada.html">Calendario de temporada</a>
+<a href="articulos.html">Artículos</a>
+<a href="tests.html">Tests</a>
+<a href="guias.html">Guías</a>
+<a href="entrevistas.html">Entrevistas</a>
+<a href="mas.html">Más</a>
+<a href="acerca.html">Acerca</a>
+
+</div>
+
+
+<!-- FRANJA NARANJA -->
+
+<div id="orangeLine" class="orange-line"></div>
+
+
+<!-- BANNER -->
+
+<div class="banner">
+
+<img id="bannerImg">
+
+<button onclick="window.location.href=bannerRuta">Leer Más</button>
+
+</div>
+
+
+
+<div class="container">
+
+<div id="newsContainer"></div>
+
+</div>
+
+
+
+<script>
+
+/* =========================
+CONFIGURACION PAGINA
+========================= */
+
+const pagina = {
+
+orangeLine:
+"https://informatiom0.wordpress.com/wp-content/uploads/2026/03/franga.png?w=1440&allow_lossy=1",
+
+banner:{
+imagen:"https://informatiom0.wordpress.com/wp-content/uploads/2026/03/filters_quality95formatwebp-1.webp?w=1440&allow_lossy=1",
+ruta:"noticia-principal.html"
+},
+
+News: [
+
+{
+Imagen:"https://informatiom0.wordpress.com/wp-content/uploads/2026/03/filters_quality95formatwebp.webp?allow_lossy=1",
+texto:["Noticia sobre el nuevo héroe Shawl"],
+Fecha:["10 de marzo","12:22"],
+Ruta:"Shawl.html"
+},
+
+{
+Imagen:"https://informatiom0.wordpress.com/wp-content/uploads/2026/03/filters_quality95formatwebp.webp?allow_lossy=1",
+texto:["Noticia sobre el villano Shawl"],
+Fecha:["8 de marzo","12:22"],
+Ruta:"ShawlVillain.html"
+},
+
+{
+Imagen:"https://informatiom0.wordpress.com/wp-content/uploads/2026/03/filters_quality95formatwebp.webp?allow_lossy=1",
+texto:["Nueva historia del universo Hero"],
+Fecha:[],
+Ruta:"HeroWorld.html"
+}
+
+]
+
+}
+
+
+/* =========================
+CARGAR BANNER
+========================= */
+
+document.getElementById("orangeLine").style.backgroundImage=
+`url(${pagina.orangeLine})`;
+
+const bannerRuta=pagina.banner.ruta;
+
+document.getElementById("bannerImg").src=
+pagina.banner.imagen;
+
+
+/* =========================
+CARGAR NOTICIAS
+========================= */
+
+const container=document.getElementById("newsContainer");
+
+pagina.News.forEach(n=>{
+
+const card=document.createElement("div");
+card.className="news-card";
+
+let fechaHTML="";
+
+if(n.Fecha && n.Fecha.length){
+
+fechaHTML=`<div class="news-date">${n.Fecha.join(" ")}</div>`;
+
+}
+
+card.innerHTML=`
+
+<img src="${n.Imagen}" onclick="window.location.href='${n.Ruta}'">
+
+<div class="news-info">
+
+<h2 onclick="window.location.href='${n.Ruta}'">
+${n.texto.join("")}
+</h2>
+
+${fechaHTML}
+
+</div>
+
+`;
+
+container.appendChild(card);
+
+});
+
+</script>
+
+
+</body>
+</html>
