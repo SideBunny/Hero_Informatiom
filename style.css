@@ -21,9 +21,17 @@ font-size:28px;
 font-weight:bold;
 }
 
+/* LUPA */
+
 .search{
-font-size:22px;
 cursor:pointer;
+display:flex;
+align-items:center;
+}
+
+.search img{
+width:24px;
+height:24px;
 }
 
 /* ===== MENU ===== */
@@ -124,6 +132,17 @@ align-items:flex-start;
 .news-card img{
 width:100%;
 height:auto;
+}
+
+}
+
+/* LUPA CELULAR */
+
+@media(max-width:768px){
+
+.search img{
+width:32px;
+height:32px;
 }
 
 }
