@@ -44,7 +44,7 @@
 <div id="orangeLine" class="orange-line"></div>
 
 
-<!-- BANNER (clickeable) -->
+<!-- BANNER -->
 
 <div class="banner" id="bannerLink">
 
@@ -70,11 +70,14 @@ CONFIGURACION PAGINA
 
 const pagina = {
 
-orangeLine:
-"https://informatiom0.wordpress.com/wp-content/uploads/2026/03/franga.png?w=1440&allow_lossy=1",
+orangeLine:{
+pc:"https://informatiom0.wordpress.com/wp-content/uploads/2026/03/franga.png?w=1440&allow_lossy=1",
+cell:"AQUI_PONES_LA_IMAGEN_370x4"
+},
 
 banner:{
-imagen:"https://informatiom0.wordpress.com/wp-content/uploads/2026/03/mas-hero.png?w=1440&allow_lossy=1",
+pc:"https://informatiom0.wordpress.com/wp-content/uploads/2026/03/mas-hero.png?w=1440&allow_lossy=1",
+cell:"AQUI_PONES_LA_IMAGEN_370x50",
 ruta:"noticia-principal.html"
 },
 
@@ -107,19 +110,60 @@ Ruta:"HeroWorld.html"
 
 
 /* =========================
-CARGAR BANNER
+DETECTAR DISPOSITIVO
 ========================= */
 
-document.getElementById("orangeLine").style.backgroundImage =
-`url(${pagina.orangeLine})`;
+function esCelular(){
+
+return window.innerWidth <= 768;
+
+}
+
+
+/* =========================
+CARGAR IMAGENES RESPONSIVE
+========================= */
+
+function cargarImagenes(){
+
+const orange = document.getElementById("orangeLine");
+const bannerImg = document.getElementById("bannerImg");
+
+if(esCelular()){
+
+orange.style.backgroundImage =
+`url(${pagina.orangeLine.cell})`;
+
+bannerImg.src = pagina.banner.cell;
+
+}else{
+
+orange.style.backgroundImage =
+`url(${pagina.orangeLine.pc})`;
+
+bannerImg.src = pagina.banner.pc;
+
+}
+
+}
+
+cargarImagenes();
+
+/* actualizar si cambias tamaño pantalla */
+
+window.addEventListener("resize",cargarImagenes);
+
+
+/* =========================
+CLICK BANNER
+========================= */
 
 const banner = document.getElementById("bannerLink");
 
-document.getElementById("bannerImg").src =
-pagina.banner.imagen;
-
 banner.onclick = () => {
+
 window.location.href = pagina.banner.ruta;
+
 };
 
 
