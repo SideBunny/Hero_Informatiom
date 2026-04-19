@@ -235,7 +235,7 @@ max-width:100%;
 
 }
 
-/* ===== CELULAR ===== */
+/* ===== CELULAR (ARREGLADO DE VERDAD) ===== */
 
 @media(max-width:768px){
 
@@ -248,7 +248,7 @@ height:32px;
 padding:20px;
 }
 
-/* 🔥 LAYOUT CORRECTO */
+/* GRID PRINCIPAL */
 .news-layout{
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -256,12 +256,19 @@ gap:15px;
 margin-bottom:50px;
 }
 
-/* ONE ocupa todo */
-.oneNews{
+/* 🔥 CLAVE: TODA la columna izquierda arriba */
+.left-column{
 grid-column:1 / 3;
+display:block;
 }
 
-/* IZQUIERDA */
+/* ONE vuelve a ser grande */
+.oneNews{
+width:100%;
+margin-bottom:20px;
+}
+
+/* TWO = columna izquierda */
 .twoNews{
 grid-column:1;
 display:flex;
@@ -269,8 +276,8 @@ flex-direction:column;
 gap:20px;
 }
 
-/* DERECHA */
-.threeNews{
+/* THREE = columna derecha */
+.right-column{
 grid-column:2;
 display:flex;
 flex-direction:column;
@@ -290,10 +297,6 @@ height:auto;
 
 .small-news h3{
 font-size:14px;
-}
-
-.right-column{
-gap:20px;
 }
 
 }
