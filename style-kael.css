@@ -245,3 +245,22 @@ padding:20px;
 }
 
 }
+
+/* ===== ESPACIADO ENTRE SECCIONES ===== */
+
+.news-layout{
+margin-bottom:80px; /* espacio entre cada sección */
+}
+
+/* opcional: que la última no tenga espacio extra */
+.news-layout:last-child{
+margin-bottom:0;
+}
+
+@media(max-width:768px){
+
+.news-layout{
+margin-bottom:50px;
+}
+
+}
