@@ -264,3 +264,51 @@ margin-bottom:50px;
 }
 
 }
+
+
+/* ===== CELULAR: MINI GRID PARA NOTICIAS CHICAS ===== */
+
+@media(max-width:768px){
+
+/* Hacemos que left + right se apilen */
+.news-layout{
+grid-template-columns:1fr;
+}
+
+/* TWO y THREE en formato grid de 2 columnas */
+.twoNews,
+.threeNews{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+/* Las cards chicas ocupan todo su espacio */
+.small-news{
+max-width:100%;
+}
+
+/* Imagenes chicas estilo miniatura */
+.small-news img{
+width:100%;
+height:auto;
+aspect-ratio:16/9;
+}
+
+/* Texto más compacto */
+.small-news h3{
+font-size:14px;
+}
+
+/* Opcional: menos espacio vertical */
+.right-column{
+gap:20px;
+}
+
+}
+
+.small-news{
+display:flex;
+flex-direction:column;
+gap:6px;
+}
