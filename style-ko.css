@@ -107,7 +107,7 @@ max-width:1400px;
 margin:auto;
 }
 
-/* ===== GRID PRINCIPAL (PC) ===== */
+/* ===== GRID PRINCIPAL ===== */
 
 .news-layout{
 display:grid;
@@ -121,7 +121,7 @@ margin-bottom:80px;
 margin-bottom:0;
 }
 
-/* ===== SUBGRID IZQUIERDA (PC) ===== */
+/* ===== COLUMNA IZQUIERDA ===== */
 
 .left-column{
 display:grid;
@@ -130,13 +130,29 @@ gap:40px;
 align-items:start;
 }
 
+/* 🔥 ONE siempre a la izquierda (col grande) */
+.oneNews{
+grid-column:1;
+}
+
+/* 🔥 TWO SIEMPRE a la derecha dentro de left-column */
 .twoNews{
+grid-column:2;
 display:flex;
 flex-direction:column;
 gap:30px;
 }
 
+/* ===== COLUMNA DERECHA (THREE) ===== */
+
 .right-column{
+display:flex;
+flex-direction:column;
+gap:30px;
+}
+
+/* 🔥 THREE siempre queda en esta columna */
+.threeNews{
 display:flex;
 flex-direction:column;
 gap:30px;
@@ -175,7 +191,7 @@ color:#aaa;
 font-size:14px;
 }
 
-/* ===== SMALL NEWS ===== */
+/* ===== TWO / THREE NEWS ===== */
 
 .small-news{
 display:flex;
@@ -215,6 +231,11 @@ grid-template-columns:1fr;
 grid-template-columns:1fr;
 }
 
+/* se apilan correctamente */
+.twoNews{
+grid-column:auto;
+}
+
 .small-news img{
 width:100%;
 height:auto;
@@ -226,7 +247,7 @@ max-width:100%;
 
 }
 
-/* ===== CELULAR (ARREGLADO 🔥) ===== */
+/* ===== CELULAR ===== */
 
 @media(max-width:768px){
 
@@ -239,7 +260,7 @@ height:32px;
 padding:20px;
 }
 
-/* 👉 Usamos SOLO este grid */
+/* 🔥 ESTRUCTURA CLARA */
 .news-layout{
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -247,21 +268,12 @@ gap:15px;
 margin-bottom:50px;
 }
 
-/* 🚫 IMPORTANTE: anulamos el layout viejo */
-.left-column{
-display:contents;
-}
-
-.right-column{
-display:contents;
-}
-
-/* 🟢 ONE grande arriba */
+/* ONE arriba completo */
 .oneNews{
 grid-column:1 / 3;
 }
 
-/* 🟠 IZQUIERDA */
+/* TWO izquierda */
 .twoNews{
 grid-column:1;
 display:flex;
@@ -269,7 +281,7 @@ flex-direction:column;
 gap:20px;
 }
 
-/* 🔵 DERECHA */
+/* THREE derecha */
 .threeNews{
 grid-column:2;
 display:flex;
@@ -277,15 +289,15 @@ flex-direction:column;
 gap:20px;
 }
 
-/* Ajustes visuales */
+/* ajustes visuales */
 .small-news{
 max-width:100%;
 }
 
 .small-news img{
 width:100%;
-aspect-ratio:16/9;
 height:auto;
+aspect-ratio:16/9;
 }
 
 .small-news h3{
